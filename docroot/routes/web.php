@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ListController@show');
+
+Route::get('/login', function () {
+	return 'Please login first';
+})->name('login');
+
+Auth::routes(); // must after login route definition
+
+Route::get('/foo', function () {
+	return 'Hello World';
+})->middleware('auth');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
