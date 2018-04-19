@@ -13,11 +13,7 @@
 
 Route::get('/', 'ListController@show');
 
-Route::get('/login', function () {
-	return 'Please login first';
-})->name('login');
-
-Auth::routes(); // must after login route definition
+Auth::routes();
 
 Route::get('/foo', function () {
 	return 'Hello World';
@@ -26,3 +22,9 @@ Route::get('/foo', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('admin/login', 'Admin\AuthController@getLogin');
+Route::post('admin/login', 'Admin\AuthController@postLogin');
+Route::get('admin/register', 'Admin\AuthController@getRegister');
+Route::post('admin/register', 'Admin\AuthController@postRegister');
+Route::get('admin', 'AdminController@index');
