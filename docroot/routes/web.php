@@ -15,9 +15,9 @@ Route::get('/', 'ListController@show');
 
 Auth::routes();
 
-Route::get('/foo', function () {
-	return 'Hello World';
-})->middleware('auth');
+Route::get('/user/{id}', 'UserController@show')->name('profile');
+Route::get('/user/{id}/edit', 'UserController@edit');
+Route::post('/user/{id}/update', 'UserController@update');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
